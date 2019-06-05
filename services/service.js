@@ -5,7 +5,7 @@ import cors from 'cors';
 import movies from '../controllers/movies';
 
 
-mongoose.connect('mongodb://localhost/mydb', { useNewUrlParser: true });
+mongoose.connect('mongodb://localhost/movies', { useNewUrlParser: true });
 
 const app = express();
 app.use(cors());
