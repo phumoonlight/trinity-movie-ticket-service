@@ -1,11 +1,12 @@
 import Movie from '../models/movie';
 
 const getMovies = async (request, response) => {
+  const { query } = request;
   let result;
   try {
-    if ('search' in request.query) {
-      const { search } = request.query;
-      result = await Movie.find({ name: { $regex: search, $options: 'i' } }).exec();
+    if (Object.prototype.hasOwnProperty.call(query, 'searchkey')) {
+      const { searchkey } = query;
+      result = await Movie.find({ name: { $regex: searchkey, $options: 'i' } }).exec();
     } else {
       result = await Movie.find().exec();
     }
